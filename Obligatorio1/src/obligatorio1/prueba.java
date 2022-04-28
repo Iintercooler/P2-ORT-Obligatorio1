@@ -6,6 +6,9 @@ public class prueba {
         Matriz matrizObj = new Matriz();
 //        int matriz[][] = matrizObj.getMatriz();
         matrizObj.cargarMatrizEsquina(5, 10);
+        matrizObj.cargarPuntas(8);
+matrizObj.esConectada();
+        
         int matriz[][] = matrizObj.getMatriz();
         
         for (int i = 0; i < matriz.length; i++) {
