@@ -8,16 +8,6 @@ public class prueba {
         matrizObj.cargarMatrizEsquina(5, 10);
         int matriz[][] = matrizObj.getMatriz();
         
-//        for (int i = 0; i < matriz.length; i++) {
-//            
-//            for (int j = 0; j < matriz[0].length; j++) {
-//
-//                matriz[i][j] = numero;
-//                matriz[j][i] = numero;
-//            }
-//            numero++;
-//            
-//        }
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
                 System.out.print(" " + matriz[i][j] + " ");
