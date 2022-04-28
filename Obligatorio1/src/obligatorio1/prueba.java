@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package obligatorio1;
 
-/**
- *
- * @author fgavello
- */
+
 public class prueba {
+
+
+    public static void main(String[] args) {
+       Matriz matriz= new Matriz();
+        for (int i = 0; i < matriz.getMatriz().length; i++) {
+            for (int j = 0; j < matriz.getMatriz()[0].length; j++) {
+                System.out.print(" "+matriz.getMatriz()[i][j]+ " ");
+                
+            }
+            System.out.println("  ");
+            
+        }
+    }
     
 }
