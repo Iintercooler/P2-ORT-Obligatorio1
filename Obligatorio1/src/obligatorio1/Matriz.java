@@ -4,7 +4,26 @@ public class Matriz {
 
     int[][] matrizDeTrabajo;
 
+    public void setMatrizDeTrabajo(int[][] matrizDeTrabajo) {
+        this.matrizDeTrabajo = matrizDeTrabajo;
+    }
+    
+
     public void cargarMatrizEsquina(int n, int desde) {
+        
+        int matriz[][] = new int[n][n];
+        for (int i = 0; i < matriz.length; i++) {
+
+            for (int j = 0; j < matriz[0].length; j++) {
+
+                matriz[i][j] = desde;
+                matriz[j][i] = desde;
+            }
+            desde++;
+
+        }
+        this.setMatrizDeTrabajo(matriz);
+
     }
 
     public void cargarPuntas(int n) {
