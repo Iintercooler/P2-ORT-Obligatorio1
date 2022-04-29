@@ -106,6 +106,7 @@ public class Matriz {
     }
 
     public boolean reacomodar(int m, int n) {
+        //Si escribo esto aca lo podes ver
         return true;
     }
 
