@@ -56,27 +56,40 @@ public class Matriz {
     }
 
     public boolean esConectada2() {
-     int mat[][] = {{0, 1, 0, 0},
-                       {0, 0, 1, 1},
-                       {1, 0, 0, 1},
-                       {0, 0, 1, 1}};
-        boolean condicion = true;
-        
-        
-        
-        
-        
-        
-    return true;
-    }
-    
-    
-    public boolean esConectada() {
-
         int mat[][] = {{0, 1, 0, 0},
                        {0, 0, 1, 1},
-                       {1, 0, 0, 1},
+                       {1, 0, 1, 1},
                        {0, 0, 1, 1}};
+        boolean condicion = true;
+
+        
+        for (int f = 0; f < mat.length; f++) {
+            for (int c = 0; c < mat[0].length; c++) {
+                if ((f > 0 && f < mat.length - 1) && (c > 0 && c < mat[0].length-1)) {
+                    
+                    if ((mat[f][c - 1] != 0 && mat[f][c + 1] != 0)) {
+                       
+                        if ((mat[f + 1][c] != 0 && mat[f - 1][c] != 0)){
+                        condicion = false;
+
+                    }
+                    }
+                }
+
+            }
+
+        }
+        return condicion;
+       
+    }
+
+
+public boolean esConectada() {
+
+        int mat[][] = {{0, 1, 0, 0},
+        {0, 0, 1, 1},
+        {1, 0, 0, 1},
+        {0, 0, 1, 1}};
         boolean condicion = true;
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
@@ -154,7 +167,7 @@ public class Matriz {
                         }
                     }
 
-                    if ((f > 0 && f < mat.length - 1) && (c > 0 && c < mat[0].length)) {
+                    if ((f > 0 && f < mat.length - 1) && (c > 0 && c < mat[0].length-1)) {
                         if ((mat[f][c - 1] != 0 && mat[f][c + 1] != 0) && (mat[f + 1][c] != 0 && mat[f - 1][c] != 0)) {
                             condicion = false;
 

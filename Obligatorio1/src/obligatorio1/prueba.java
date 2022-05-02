@@ -8,7 +8,7 @@ public class prueba {
         matrizObj.cargarMatrizEsquina(5, 10);
         matrizObj.cargarPuntas(8);
     
-        System.out.println(matrizObj.esConectada());
+        System.out.println(matrizObj.esConectada2());
     
         
         int matriz[][] = matrizObj.getMatriz();
