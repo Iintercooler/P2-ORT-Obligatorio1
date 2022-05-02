@@ -1,5 +1,8 @@
 package obligatorio1;
 
+import java.util.Iterator;
+import java.util.Map;
+
 public class Matriz {
 
     int[][] matrizDeTrabajo;
@@ -196,9 +199,42 @@ public boolean esConectada() {
             }
         }
     }
-
+    /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
-        return "hola";
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                //guardo la primer fila en el map
+                if (i == 0) {
+                    map.put(mat[0][j], 1);
+                }
+                //si hay un elemento de la fila actual presente en el map, sumo uno a su valor
+                if (i > 0 && map.containsKey(mat[i][j]) && map.get(mat[i][j]) == i){
+                    map.put(mat[i][j], i + 1);
+                }
+            }
+        }
+        int valorMin = MAX_VALUE;
+        int filas = 0;
+        //Creo un iterador y busco el menor 'Key' que tengo un 'Value' mayor que uno
+        Iterator it = map.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry entrada = (Map.Entry)it.next();
+            //Recorro el map hasta encontrar un elemento que se repite en alguna columna
+            if(entrada.getValue() > 1){
+                //Chequeo si es igual al menor key
+                if(valorMin <= entrada.getKey()){
+                    //Cuento la cantidad de veces que entre al minimo valor.
+                    filas++;
+                    valorMin = entrada.getKey();
+                }
+            }
+        }
+        if(filas == mat.length){
+            return Integer.toString(valorMin);
+        } else {
+            return "NO TIENE";
+        }
     }
 
     public boolean reacomodar(int m, int n) {
