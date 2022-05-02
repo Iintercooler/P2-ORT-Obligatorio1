@@ -7,17 +7,19 @@ public class prueba {
 //        int matriz[][] = matrizObj.getMatriz();
         matrizObj.cargarMatrizEsquina(5, 10);
         matrizObj.cargarPuntas(8);
-matrizObj.esConectada();
+    
+        System.out.println(matrizObj.esConectada());
+    
         
         int matriz[][] = matrizObj.getMatriz();
         
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.print(" " + matriz[i][j] + " ");
-
-            }
-            System.out.println("  ");
-        }
+//        for (int i = 0; i < matriz.length; i++) {
+//            for (int j = 0; j < matriz[0].length; j++) {
+//                System.out.print(" " + matriz[i][j] + " ");
+//
+//            }
+//            System.out.println("  ");
+//        }
     }
 
 }
