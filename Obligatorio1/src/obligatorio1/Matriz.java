@@ -201,6 +201,8 @@ public boolean esConectada() {
     }
     /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
+
+        //Primera idea de esto, esta mal pero es un inicio. Seguir pensando
         Map<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < mat.length; i++){
             for(int j = 0; j < mat[0].length; j++){
