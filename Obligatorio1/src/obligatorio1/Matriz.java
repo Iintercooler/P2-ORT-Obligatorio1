@@ -272,9 +272,24 @@ public class Matriz {
     }
 
     public boolean reacomodar(int m, int n) {
-        //Si escribo esto aca lo podes ver
-//        djasiodhaiospdhasipdhapos
-        return true;
+        int[][] mat = getMatriz();
+       
+        boolean sePuede = true;
+        if(mat.length * mat[0].length != m * n){
+            sePuede = false;
+        } else {
+            int indice = 0;
+            int[][] aux = new int[m][n];
+            for(int i = 0; i < mat.length; i++){
+                for(int j = 0; j < mat[0].length; j++ ){
+                    aux[indice / n][indice % n] = mat[i][j];
+                    indice++;
+                }
+            }
+            setMatriz(aux);
+        }
+        
+        return sePuede;
     }
 //Esto de aca es el set matriz de trabajo que hiciste arriba en la linea 14?? 
 //Porque no hay ningun metodo en la letra del obligatorio que diga SetMatrizDe Trabajo.
