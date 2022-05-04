@@ -272,10 +272,17 @@ public class Matriz {
     }
 
     public boolean reacomodar(int m, int n) {
-        int[][] mat = getMatriz();
-       
+        int[][] mat = getMatriz(); 
         boolean sePuede = true;
-        if(mat.length * mat[0].length != m * n){
+        //Tomo la matriz de trabajo y creo un 
+        //booleano para comprobar la condicion de que se pueda
+        //Chequeo la condicion, 
+        //misma cantidad de elementos en total
+        //En caso de que se pueda, creo un indice y una matriz auxiliar
+        //recorro la matriz original llenando la nueva como corresponda
+        //actualizo el indice, para terminar se setea la matriz aux como
+        //matriz de trabajo.
+        if(mat.length * mat[0].length != m * n){ 
             sePuede = false;
         } else {
             int indice = 0;
