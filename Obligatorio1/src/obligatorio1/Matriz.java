@@ -281,7 +281,17 @@ public class Matriz {
     }
 
     public boolean tieneFilaIgual() {
-        return true;
+        boolean iguales = true;
+        int[][] mat = getMatriz();
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length - 1 && iguales; j++){
+                if (mat[i][j] != mat[i][j + 1]){
+                    iguales = false;
+                }
+            }
+            iguales = true;
+        }
+        return iguales;
     }
 
 }
