@@ -276,7 +276,8 @@ public class Matriz {
 //        djasiodhaiospdhasipdhapos
         return true;
     }
-
+//Esto de aca es el set matriz de trabajo que hiciste arriba en la linea 14?? 
+//Porque no hay ningun metodo en la letra del obligatorio que diga SetMatrizDe Trabajo.
     public void setMatriz(int[][] mat) {
     }
 
