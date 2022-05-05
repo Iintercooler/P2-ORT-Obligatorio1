@@ -12,7 +12,7 @@ public class prueba {
         Matriz matrizObj = new Matriz();
         Scanner input=new Scanner(System.in);
 //        input = new Scanner(new File(".\\Test\\datos.txt"));
-        System.out.println(matrizObj.tieneFilaIgual());
+        System.out.println(matrizObj.reacomodar());
 //        PrintStream consola = System.out;
 //        PrintStream archivo = new PrintStream(new FileOutputStream(".\\Test\\salida.txt"));
 //        

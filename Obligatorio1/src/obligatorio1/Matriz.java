@@ -275,7 +275,7 @@ public class Matriz {
 //        int[][] mat = getMatriz(); 
         int m,n;
         m=1;
-        n=6;
+        n=4;
         
         int[][] mat = {{1,2},
                        {3,4}};
@@ -300,12 +300,13 @@ public class Matriz {
                 }
             }
             setMatriz(aux);
-        }
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                System.out.print(mat[i][j]);
+              for (int i = 0; i < aux.length; i++) {
+            for (int j = 0; j < aux[0].length; j++) {
+                System.out.print(aux[i][j]);
             }
             System.out.println();
+        }
+      
             
         }
         
