@@ -318,15 +318,10 @@ public class Matriz {
 
     public boolean tieneFilaIgual() {
         boolean iguales = true;
-//        int[][] mat = getMatriz();
+        //int[][] mat = getMatriz();
         int[][] mat = {{2,2,2},
                        {4,5,6},
                        {7,8,9}};
-        
-
-        
-        
-        
         for(int i = 0; i < mat.length; i++){
             
             for(int j = 0; j < mat[0].length - 1 && iguales; j++){
