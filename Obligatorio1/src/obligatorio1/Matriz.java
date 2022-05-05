@@ -316,20 +316,27 @@ public class Matriz {
     public void setMatriz(int[][] mat) {
     }
 
-    public boolean tieneFilaIgual() {
+ public boolean tieneFilaIgual() {
         boolean iguales = true;
-        //int[][] mat = getMatriz();
-        int[][] mat = {{2,2,2},
-                       {4,5,6},
-                       {7,8,9}};
-        for(int i = 0; i < mat.length; i++){
-            
+        boolean salir = false;
+//        int[][] mat = getMatriz();
+        int[][] mat = {{2,4,2},
+                       {5,1,5},
+                       {7,4,7}};
+        
+
+        
+        
+        
+        for(int i = 0; i < mat.length && !salir; i++){
+            iguales=true;
             for(int j = 0; j < mat[0].length - 1 && iguales; j++){
                 if (mat[i][j] != mat[i][j + 1]){
                     iguales = false;
-                }else iguales=true;
+                }
+                if(iguales){salir = true;}
             }
-           
+          
         }
         return iguales;
     }
