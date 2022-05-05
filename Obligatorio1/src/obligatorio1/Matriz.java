@@ -271,8 +271,14 @@ public class Matriz {
        
     }
 
-    public boolean reacomodar(int m, int n) {
-        int[][] mat = getMatriz(); 
+    public boolean reacomodar(/*int m, int n*/) {
+//        int[][] mat = getMatriz(); 
+        int m,n;
+        m=1;
+        n=6;
+        
+        int[][] mat = {{1,2},
+                       {3,4}};
         boolean sePuede = true;
         //Tomo la matriz de trabajo y creo un 
         //booleano para comprobar la condicion de que se pueda
@@ -295,6 +301,13 @@ public class Matriz {
             }
             setMatriz(aux);
         }
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                System.out.print(mat[i][j]);
+            }
+            System.out.println();
+            
+        }
         
         return sePuede;
     }
@@ -305,14 +318,23 @@ public class Matriz {
 
     public boolean tieneFilaIgual() {
         boolean iguales = true;
-        int[][] mat = getMatriz();
+//        int[][] mat = getMatriz();
+        int[][] mat = {{2,2,2},
+                       {4,5,6},
+                       {7,8,9}};
+        
+
+        
+        
+        
         for(int i = 0; i < mat.length; i++){
+            
             for(int j = 0; j < mat[0].length - 1 && iguales; j++){
                 if (mat[i][j] != mat[i][j + 1]){
                     iguales = false;
-                }
+                }else iguales=true;
             }
-            iguales = true;
+           
         }
         return iguales;
     }
