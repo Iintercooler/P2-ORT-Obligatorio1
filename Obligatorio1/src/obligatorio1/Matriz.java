@@ -88,103 +88,231 @@ public class Matriz {
 
     }
 
-    public boolean esConectada() {
-
-        int mat[][] = {{0, 1, 0, 0},
-        {0, 0, 1, 1},
-        {1, 0, 0, 1},
-        {0, 0, 1, 1}};
-        boolean condicion = true;
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                System.out.print(" " + mat[i][j] + " ");
-
-            }
-            System.out.println("  ");
+    public boolean esConectada() {// calcua la cantidad de islas formadas por los ceros, si hay mas de una isla quiere decir que hay ceros no conectados
+//        int mat[][] = {{1, 3, 2, 3},
+//                       {2, 1, 1, 4},
+//                       {4, 1, 5, 1},
+//                       {5, 9, 8, 1}};
+        int mat[][] = this.matrizDeTrabajo;
+        boolean resultado = false;
+        int h = mat.length;
+        if (h == 0) {
+            return false;
         }
+        int l = mat[0].length;
+        int result = 0;
 
-        for (int f = 0; f < mat.length && condicion; f++) {
-
-            for (int c = 0; c < mat.length && condicion; c++) {
-
-                if (mat[f][c] == 0) {
-                    if (f == 0 && c == 0) {
-                        if (mat[f + 1][c] != 0 && mat[f][c + 1] != 0) {
-                            condicion = false;
-                            System.out.println(condicion + "1");
-
-                        }
-                    }
-
-                    if (f == 0 && c == mat[0].length - 1) {
-                        if (mat[f + 1][c] != 0 && mat[f][c - 1] != 0) {
-                            condicion = false;
-                            System.out.println(condicion + "2");
-
-                        }
-                    }
-
-                    if (f == mat.length - 1 && c == 0) {
-                        if (mat[f - 1][c] != 0 && mat[f][c + 1] != 0) {
-                            condicion = false;
-                            System.out.println(condicion + "3");
-
-                        }
-
-                    }
-                    if (f == mat.length - 1 && c == mat[0].length - 1) {
-                        if (mat[f - 1][c] != 0 && mat[f][c - 1] != 0) {
-                            condicion = false;
-                            System.out.println(condicion + "4");
-
-                        }
-                    }
-
-                    if ((f > 0 && f < mat.length - 1) && c == 0) {
-                        if (mat[f][c + 1] != 0 && mat[f + 1][c] != 0) {
-                            condicion = false;
-                            System.out.println(condicion + "5");
-
-                        }
-                    }
-
-                    if ((f == mat.length - 1 && c > 0) && (c < mat[0].length)) {
-                        if ((mat[f][c - 1] != 0) && (mat[f - 1][c] != 0)) {
-                            condicion = false;
-                            System.out.println(condicion + "6");
-
-                        }
-
-                    }
-                    if ((f > 0 && f < mat.length - 1) && (c == mat[0].length - 1)) {
-                        if (mat[f][c - 1] != 0 && mat[f + 1][c] != 0) {
-                            condicion = false;
-                            System.out.println(mat[f][c]);
-                        }
-                    }
-
-                    if ((f == 0 && c > 0) && (c < mat[0].length - 1)) {
-                        if (mat[f][c + 1] != 0 && mat[f + 1][c] != 0) {
-
-                            condicion = false;
-                            System.out.println(condicion + "8");
-                        }
-                    }
-
-                    if ((f > 0 && f < mat.length - 1) && (c > 0 && c < mat[0].length - 1)) {
-                        if ((mat[f][c - 1] != 0 && mat[f][c + 1] != 0) && (mat[f + 1][c] != 0 && mat[f - 1][c] != 0)) {
-                            condicion = false;
-
-                        }
-
-                    }
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < l; j++) {
+                if (mat[i][j] == 0) {
+                    DFS(mat, i, j);
+                    result++;
                 }
             }
         }
-        return condicion;
+        if (result > 1 || result == 0) {
+            System.out.println("no es conectada");
+        } else {
+            System.out.println("es conectada" + result);
+        }
+
+        if (result == 1) {
+            resultado = true;
+        }
+
+        if (result > 1) {
+            resultado = false;
+        }
+
+        return resultado;
 
     }
 
+    private void DFS(int[][] mat, int row, int col) {
+
+        int H = mat.length;
+        int L = mat[0].length;
+
+        if (row < 0 || col < 0 || row >= H || col >= L || mat[row][col] != 0) {
+            return;
+        }// metodo recursivo 
+        mat[row][col] = 1;
+        DFS(mat, row + 1, col);
+        DFS(mat, row - 1, col);
+        DFS(mat, row, col + 1);
+        DFS(mat, row, col - 1);
+    }
+
+//    public int calcularPerimetro() {
+//        int contador = 0;
+//        int mat[][] = {{0, 0, 0, 0},
+//        {0, 1, 1, 1},
+//        {1, 1, 0, 1},
+//        {0, 1, 0, 1}};
+//
+////        {1,0,1,4,56,0}
+////        {0,0,0,33,4,0}
+////        {0,3,4,-2,0,0}
+////        {0 0 0,5,0,6}
+////        {7 0 0 0 0 0}
+//        for (int i = 0; i < mat.length; i++) {
+//            for (int j = 0; j < mat[0].length; j++) {
+//                if (mat[i][j] == 1) {
+//                    contador++;
+//
+//                }
+//
+//            }
+//
+//        }
+//
+//        int perimetro = 0;
+//        for (int i = 0; i < mat.length; i++) {
+//            for (int j = 0; j < mat[0].length; j++) {
+//                if (mat[i][j] == 1) {
+//                    // arriba
+//                    if (i == 0) {
+//                        perimetro++;
+//                    } else {
+//                        if (mat[i - 1][j] == 0) {
+//                            perimetro++;
+//                        }
+//                    }
+//                    // abajo
+//                    if (i == mat.length - 1) {
+//                        perimetro++;
+//                    } else {
+//                        if (mat[i + 1][j] == 0) {
+//                            perimetro++;
+//                        }
+//                    }
+//                    // izquierda
+//                    if (j == 0) {
+//                        perimetro++;
+//                    } else {
+//                        if (mat[i][j - 1] == 0) {
+//                            perimetro++;
+//                        }
+//                    }
+//                    // derecha
+//                    if (j == mat[0].length - 1) {
+//                        perimetro++;
+//                    } else {
+//                        if (mat[i][j + 1] == 0) {
+//                            perimetro++;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        if (contador * 2 + 2 != perimetro) {
+//            System.out.println("no es conectada");
+//
+//        }
+//        if (contador * 2 + 2 == perimetro) {
+//            System.out.println("es conectada");
+//        }
+//        return perimetro;
+//    }
+//
+//    public boolean esConectada() {
+//
+//        int mat[][] = {{0, 1, 0, 0},
+//        {0, 0, 1, 1},
+//        {1, 1, 1, 1},
+//        {0, 0, 1, 1}};
+//
+//        boolean condicion = true;
+//
+//        for (int i = 0; i < mat.length; i++) {
+//            for (int j = 0; j < mat[0].length; j++) {
+//                System.out.print(" " + mat[i][j] + " ");
+//
+//            }
+//            System.out.println("  ");
+//        }
+//
+//        for (int f = 0; f < mat.length && condicion; f++) {
+//
+//            for (int c = 0; c < mat.length && condicion; c++) {
+//
+//                if (mat[f][c] == 0) {
+//                    if (f == 0 && c == 0) {
+//                        if (mat[f + 1][c] != 0 && mat[f][c + 1] != 0) {
+//                            condicion = false;
+////                            System.out.println(condicion + "1");
+//
+//                        }
+//                    }
+//
+//                    if (f == 0 && c == mat[0].length - 1) {
+//                        if (mat[f + 1][c] != 0 && mat[f][c - 1] != 0) {
+//                            condicion = false;
+////                            System.out.println(condicion + "2");
+//
+//                        }
+//                    }
+//
+//                    if (f == mat.length - 1 && c == 0) {
+//                        if (mat[f - 1][c] != 0 && mat[f][c + 1] != 0) {
+//                            condicion = false;
+////                            System.out.println(condicion + "3");
+//
+//                        }
+//
+//                    }
+//                    if (f == mat.length - 1 && c == mat[0].length - 1) {
+//                        if (mat[f - 1][c] != 0 && mat[f][c - 1] != 0) {
+//                            condicion = false;
+////                            System.out.println(condicion + "4");
+//
+//                        }
+//                    }
+//
+//                    if ((f > 0 && f < mat.length - 1) && c == 0) {
+//                        if (mat[f][c + 1] != 0 && mat[f + 1][c] != 0) {
+//                            condicion = false;
+////                            System.out.println(condicion + "5");
+//
+//                        }
+//                    }
+//
+//                    if ((f == mat.length - 1 && c > 0) && (c < mat[0].length)) {
+//                        if ((mat[f][c - 1] != 0) && (mat[f - 1][c] != 0)) {
+//                            condicion = false;
+////                            System.out.println(condicion + "6");
+//
+//                        }
+//
+//                    }
+//                    if ((f > 0 && f < mat.length - 1) && (c == mat[0].length - 1)) {
+//                        if (mat[f][c - 1] != 0 && mat[f + 1][c] != 0) {
+//                            condicion = false;
+////                            System.out.println(mat[f][c]);
+//                        }
+//                    }
+//
+//                    if ((f == 0 && c > 0) && (c < mat[0].length - 1)) {
+//                        if (mat[f][c + 1] != 0 && mat[f + 1][c] != 0) {
+//
+//                            condicion = false;
+////                            System.out.println(condicion + "8");
+//                        }
+//                    }
+//
+//                    if ((f > 0 && f < mat.length - 1) && (c > 0 && c < mat[0].length - 1)) {
+//                        if ((mat[f][c - 1] != 0 && mat[f][c + 1] != 0) && (mat[f + 1][c] != 0 && mat[f - 1][c] != 0)) {
+//                            condicion = false;
+//
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+//        return condicion;
+//
+//    }
     public void generarMolino(int n) {
         int h = 0;
         int[][] mat = new int[n][n];
