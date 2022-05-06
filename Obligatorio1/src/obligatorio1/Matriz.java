@@ -11,10 +11,9 @@ public class Matriz {
 
     int[][] matrizDeTrabajo;
 
-    public void setMatrizDeTrabajo(int[][] matrizDeTrabajo) {
-        this.matrizDeTrabajo = matrizDeTrabajo;
-    }
-
+//    public void setMatrizDeTrabajo(int[][] matrizDeTrabajo) {
+//        this.matrizDeTrabajo = matrizDeTrabajo;
+//    }
     public void cargarMatrizEsquina(int n, int desde) {
 
         int matriz[][] = new int[n][n];
@@ -28,11 +27,11 @@ public class Matriz {
             desde++;
 
         }
-        this.setMatrizDeTrabajo(matriz);
+        setMatriz(matriz);
 
     }
 
-    public int[][] cargarMatrizEsquina2(int n, int hasta) {
+    public void cargarMatrizEsquina2(int n, int hasta) {
 
         int matriz[][] = new int[n][n];
         for (int i = 0; i < matriz.length; i++) {
@@ -45,21 +44,21 @@ public class Matriz {
             hasta--;
 
         }
-        return matriz;
+        setMatriz(matriz);
 
     }
 
     public void cargarPuntas(int n) {
-        int matriz1[][] = new int[n / 2][n / 2];
-        int matriz2[][] = new int[n / 2][n / 2];
-        int matriz3[][] = new int[n / 2][n / 2];
-        int matriz4[][] = new int[n / 2][n / 2];
-
-        int desde = n / 2;
-        matriz1 = cargarMatrizEsquina2(n, n);
-
-//        this.setMatrizDeTrabajo(matriz);
-        this.setMatrizDeTrabajo(matriz1);
+//        int matriz1[][] = new int[n / 2][n / 2];
+//        int matriz2[][] = new int[n / 2][n / 2];
+//        int matriz3[][] = new int[n / 2][n / 2];
+//        int matriz4[][] = new int[n / 2][n / 2];
+//
+//        int desde = n / 2;
+//        matriz1 = cargarMatrizEsquina2(n, n);
+//
+////        this.setMatrizDeTrabajo(matriz);
+//        this.setMatriz(matriz1);
     }
 
     public boolean esConectada2() {
@@ -204,10 +203,8 @@ public class Matriz {
 
     /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
-       // matriz de prueba que esta en la letra
-        int mat[][] = {{1, 5, 8, 4, 2},
-                       {5, 2, 0, 7, 9},
-                       {-3, 8, 5, -2, 2},};
+        // matriz de prueba que esta en la letra
+        int mat[][] = this.getMatriz();
 
         int M = mat.length;
         int N = mat[0].length;
@@ -231,7 +228,12 @@ public class Matriz {
             }
 
         }
-        resultado = String.valueOf(Collections.min(comunes));
+        if (comunes.size() > 0) {
+            resultado = String.valueOf(Collections.min(comunes));
+        } else {
+            resultado = "NO TIENE";
+        }
+
         return resultado;
         //Primera idea de esto, esta mal pero es un inicio. Seguir pensando
 //        Map<Integer, Integer> map = new HashMap<>();
@@ -268,17 +270,17 @@ public class Matriz {
 //        } else {
 //            return "NO TIENE";
 //        }
-       
+
     }
 
-    public boolean reacomodar(/*int m, int n*/) {
-//        int[][] mat = getMatriz(); 
-        int m,n;
-        m=1;
-        n=4;
-        
-        int[][] mat = {{1,2},
-                       {3,4}};
+    public boolean reacomodar(int m, int n) {
+        int[][] mat = getMatriz();
+//        int m,n;
+//        m=1;
+//        n=4;
+//        
+//        int[][] mat = {{1,2},
+//                       {3,4}};
         boolean sePuede = true;
         //Tomo la matriz de trabajo y creo un 
         //booleano para comprobar la condicion de que se pueda
@@ -288,56 +290,58 @@ public class Matriz {
         //recorro la matriz original llenando la nueva como corresponda
         //actualizo el indice, para terminar se setea la matriz aux como
         //matriz de trabajo.
-        if(mat.length * mat[0].length != m * n){ 
+        if (mat.length * mat[0].length != m * n) {
             sePuede = false;
         } else {
             int indice = 0;
             int[][] aux = new int[m][n];
-            for(int i = 0; i < mat.length; i++){
-                for(int j = 0; j < mat[0].length; j++ ){
+            for (int i = 0; i < mat.length; i++) {
+                for (int j = 0; j < mat[0].length; j++) {
                     aux[indice / n][indice % n] = mat[i][j];
                     indice++;
                 }
             }
-            setMatriz(aux);
-              for (int i = 0; i < aux.length; i++) {
-            for (int j = 0; j < aux[0].length; j++) {
-                System.out.print(aux[i][j]);
+            if (sePuede) {
+                setMatriz(aux);
+
             }
-            System.out.println();
+
+//            for (int i = 0; i < aux.length; i++) {
+//                for (int j = 0; j < aux[0].length; j++) {
+//                    System.out.print(aux[i][j]);
+//                }
+//                System.out.println();
+//            }
         }
-      
-            
-        }
-        
         return sePuede;
+
     }
 //Esto de aca es el set matriz de trabajo que hiciste arriba en la linea 14?? 
 //Porque no hay ningun metodo en la letra del obligatorio que diga SetMatrizDe Trabajo.
+
     public void setMatriz(int[][] mat) {
+        this.matrizDeTrabajo = mat;
     }
 
- public boolean tieneFilaIgual() {
+    public boolean tieneFilaIgual() {
         boolean iguales = true;
         boolean salir = false;
-//        int[][] mat = getMatriz();
-        int[][] mat = {{2,4,2},
-                       {5,1,5},
-                       {7,4,7}};
-        
+        int[][] mat = getMatriz();
+//        int[][] mat = {{2,4,2},
+//                       {5,1,5},
+//                       {7,4,7}};
 
-        
-        
-        
-        for(int i = 0; i < mat.length && !salir; i++){
-            iguales=true;
-            for(int j = 0; j < mat[0].length - 1 && iguales; j++){
-                if (mat[i][j] != mat[i][j + 1]){
+        for (int i = 0; i < mat.length && !salir; i++) {
+            iguales = true;
+            for (int j = 0; j < mat[0].length - 1 && iguales; j++) {
+                if (mat[i][j] != mat[i][j + 1]) {
                     iguales = false;
                 }
-                if(iguales){salir = true;}
+                if (iguales) {
+                    salir = true;
+                }
             }
-          
+
         }
         return iguales;
     }
