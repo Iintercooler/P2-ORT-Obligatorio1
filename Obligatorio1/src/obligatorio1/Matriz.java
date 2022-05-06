@@ -186,6 +186,40 @@ public class Matriz {
     }
 
     public void generarMolino(int n) {
+        int h = 0;
+        int[][] mat = new int[n][n];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                //Primer cuadrante
+                if(i < n/2 && j < n/2){
+                    if(i <= j){
+                        mat[i][j] = 1;
+                    } else{mat[i][j] = 0;}
+                }
+                //Segundo cuadrante
+                if(i < n/2 && j > n/2){
+                    h = i + n/2;
+                    if(h <= j){
+                        mat[i][j] = 1;
+                    } else{mat[i][j] = 0;}
+                }
+                //Tercer cuadrante
+                if(i > n/2 && j < n/2){
+                    if(i >= j){
+                        mat[i][j] = 1;
+                    } else{mat[i][j] = 0;}
+                }
+                //Cuarto cuadrante
+                if(i > n/2 && j > n/2){
+                    h = i + n/2;
+                    if(h >= j){
+                        mat[i][j] = 1;
+                    } else{mat[i][j] = 0;}
+                }
+            }
+        }
+        setMatriz(mat);
+
     }
 
     public int[][] getMatriz() {
