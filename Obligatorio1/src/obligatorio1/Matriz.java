@@ -314,7 +314,7 @@ public class Matriz {
 //
 //    }
 
-public static void rotar(int a[][], int N){
+/*public static void rotar(int a[][], int N){
     // Rota la matriz 90 grados.
     for (int i = 0; i < N / 2; i++)
     {
@@ -360,7 +360,7 @@ public static void rotar(int a[][], int N){
         }
         setMatriz(matTrabajo);
 }
-
+*/
     private int[][] cuartocuadrante(int[][] matrix) {
         int newDimension = matrix.length / 2;
         int[][] toReturn = new int[newDimension][newDimension];
@@ -525,7 +525,7 @@ public static void rotar(int a[][], int N){
 
         }
         setMatriz(mat);
->>>>>>> 04b2e3086e69180b9b8384eda56d0eeae4b31d1f
+
 
     }
 
