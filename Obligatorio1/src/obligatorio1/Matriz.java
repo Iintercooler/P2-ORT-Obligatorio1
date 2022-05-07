@@ -313,40 +313,51 @@ public class Matriz {
 //        return condicion;
 //
 //    }
+public static void rotar(int a[][], int N){
+    // Rota la matriz 90 grados.
+    for (int i = 0; i < N / 2; i++)
+    {
+        for (int j = i; j < N - i - 1; j++)
+        {
+            int temp = a[i][j];
+            a[i][j] = a[N - 1 - j][i];
+            a[N - 1 - j][i] = a[N - 1 - i][N - 1 - j];
+            a[N - 1 - i][N - 1 - j] = a[j][N - 1 - i];
+            a[j][N - 1 - i] = temp;
+        }
+    }
+}
+
     public void generarMolino(int n) {
-        int h = 0;
-        int[][] mat = new int[n][n];
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                //Primer cuadrante
-                if(i < n/2 && j < n/2){
-                    if(i <= j){
-                        mat[i][j] = 1;
-                    } else{mat[i][j] = 0;}
-                }
-                //Segundo cuadrante
-                if(i < n/2 && j > n/2){
-                    h = i + n/2;
-                    if(h <= j){
-                        mat[i][j] = 1;
-                    } else{mat[i][j] = 0;}
-                }
-                //Tercer cuadrante
-                if(i > n/2 && j < n/2){
-                    if(i >= j){
-                        mat[i][j] = 1;
-                    } else{mat[i][j] = 0;}
-                }
-                //Cuarto cuadrante
-                if(i > n/2 && j > n/2){
-                    h = i + n/2;
-                    if(h >= j){
-                        mat[i][j] = 1;
-                    } else{mat[i][j] = 0;}
+        int[][] mat1 = new int[n/2][n/2];
+        int[][] matTrabajo = new int[n][n];
+        for(int i = 0; i < n/2; i++){
+            for(int j = 0; j < n/2; j++){
+                if(j>=i){
+                    mat1[i][j] = 1;
                 }
             }
         }
-        setMatriz(mat);
+        //Roto cada matriz lo que corresponde, la primera no la roto, 
+        //la segunda 90°, la tercera 180° y la cuarta 270°
+        int[][] mat2 = mat1;
+        rotar(mat2, n/2);
+        int[][] mat3 = mat2;
+        rotar(mat3, n/2);
+        int[][] mat4 = mat3;
+        rotar(mat4, n/2);
+
+
+        int h = 0;
+        for(int i = 0; i < n/2; i++){
+            for(int j = 0; i < n/2; j++){
+                matTrabajo[i][j] = mat1[i][j];
+                matTrabajo[i][j + n/2] = mat2[i][j];
+                matTrabajo[i + n/2][j + n/2] = mat3[i][j];
+                matTrabajo[i + n/2][j] = mat4[i][j];
+            }
+        }
+        setMatriz(matTrabajo);
 
     }
 
