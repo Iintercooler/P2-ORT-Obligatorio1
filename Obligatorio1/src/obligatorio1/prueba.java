@@ -9,41 +9,26 @@ import java.util.Scanner;
 
 public class prueba {
 
+
     public static void main(String[] args) throws FileNotFoundException {
         Matriz matrizObj = new Matriz();
-        Scanner input=new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 //        input = new Scanner(new File(".\\Test\\datos.txt"));
-        
+
         PrintStream consola = System.out;
 //        PrintStream archivo = new PrintStream(new FileOutputStream("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
 //        
 //        
-         System.setOut(consola);
+        System.setOut(consola);
 //         System.setOut(archivo);
-         System.out.println(matrizObj.esConectada());
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        matrizObj.division();
+
 //        int matriz[][] = matrizObj.getMatriz();
 //        matrizObj.cargarMatrizEsquina(5, 10);
 //        matrizObj.cargarPuntas(8);
-   
 //        System.out.println(matrizObj.esConectada());
 //        System.out.println(matrizObj.menorComunFilas());
-        
 //        int matriz[][] = matrizObj.getMatriz();
-        
 //        for (int i = 0; i < matriz.length; i++) {
 //            for (int j = 0; j < matriz[0].length; j++) {
 //                System.out.print(" " + matriz[i][j] + " ");
@@ -52,6 +37,7 @@ public class prueba {
 //            System.out.println("  ");
 //        }
     }
+
     public static int leerEntero(String txt, int min, int max, String txtError) {
         Scanner input = new Scanner(System.in);
         boolean ok = false;
@@ -74,8 +60,7 @@ public class prueba {
         return dato;
 
     }
-    
-    
+
     public static void menuPrincipal() {
         String opcion = "";
         while (opcion != "X") {
@@ -86,11 +71,10 @@ public class prueba {
 //            opcion = leerEntero(txt, 1, 3, "Debe ingresar un numero entre 1 y 3");
             switch (opcion) {
                 case "A":
-      
+
                     break;
                 case "B":
-                   
-                    
+
                     break;
                 case "C":
                     break;
@@ -98,15 +82,6 @@ public class prueba {
 
         }
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
 //
