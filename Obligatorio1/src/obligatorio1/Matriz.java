@@ -314,7 +314,7 @@ public class Matriz {
 //
 //    }
 
-/*public static void rotar(int a[][], int N){
+public static void rotar(int a[][], int N){
     // Rota la matriz 90 grados.
     for (int i = 0; i < N / 2; i++)
     {
@@ -330,102 +330,143 @@ public class Matriz {
 }
 
     public void generarMolino(int n) {
+       
         int[][] mat1 = new int[n/2][n/2];
+        int[][] mat2 = new int[n/2][n/2];
+        int[][] mat3 = new int[n/2][n/2];
+        int[][] mat4 = new int[n/2][n/2];
         int[][] matTrabajo = new int[n][n];
+        
         for(int i = 0; i < n/2; i++){
             for(int j = 0; j < n/2; j++){
                 if(j>=i){
                     mat1[i][j] = 1;
+                     mat2[i][j] = 1;
+                      mat3[i][j] = 1;
+                       mat4[i][j] = 1;
+                    
                 }
             }
         }
+       
+        
+        
+        
         //Roto cada matriz lo que corresponde, la primera no la roto, 
         //la segunda 90°, la tercera 180° y la cuarta 270°
-        int[][] mat2 = mat1;
+        
+        
+      
         rotar(mat2, n/2);
-        int[][] mat3 = mat2;
         rotar(mat3, n/2);
-        int[][] mat4 = mat3;
+        rotar(mat3, n/2);
+
+        rotar(mat4, n/2);
+        rotar(mat4, n/2);
         rotar(mat4, n/2);
 
 
         int h = 0;
-        for(int i = 0; i < n/2; i++){
-            for(int j = 0; i < n/2; j++){
+       
+        
+         
+//        for(int i = 0; i < mat1.length; i++){
+//            for(int j = 0; j < mat1.length; j++){
+//                System.out.print(mat1[i][j]);
+//            }
+//            System.out.println("");
+//        }
+//         System.out.println(mat1.length);
+        
+        
+        
+        for(int i = 0; i < mat1.length; i++){
+            for(int j = 0; j < mat1.length; j++){
                 matTrabajo[i][j] = mat1[i][j];
                 matTrabajo[i][j + n/2] = mat2[i][j];
                 matTrabajo[i + n/2][j + n/2] = mat3[i][j];
                 matTrabajo[i + n/2][j] = mat4[i][j];
             }
         }
-        setMatriz(matTrabajo);
-}
-*/
-    private int[][] cuartocuadrante(int[][] matrix) {
-        int newDimension = matrix.length / 2;
-        int[][] toReturn = new int[newDimension][newDimension];
-        for (int i = 0; i < newDimension; i++) {
-            for (int j = 0; j < newDimension; j++) {
-                toReturn[i][j] = matrix[i + newDimension][j + newDimension];
-            }
-        }
-        return toReturn;
-    }
-
-    public int[][] primercuadrante(int[][] matrix) {
-        int newDimension = matrix.length / 2;
-        int[][] toReturn = new int[newDimension][newDimension];
-        for (int i = 0; i < newDimension; i++) {
-            for (int j = 0; j < newDimension; j++) {
-                toReturn[i][j] = matrix[i][j];
-            }
-        }
-        return toReturn;
-    }
-
-    public int[][] division() {
-        int[][] mat = {{1, 1, 1, 1, 1, 1},
-                       {1, 1, 1, 1, 1, 1},
-                       {1, 1, 1, 1, 1, 1},
-                       {1, 1, 1, 1, 1, 1},
-                      {1, 1, 1, 1, 1, 1},
-                       {1, 1, 1, 1, 1, 1}};
         
-        int resu1[][] = new int[mat.length / 2][mat.length / 2];
-        int resu2[][] = new int[mat.length / 2][mat.length / 2];
-        int resu3[][] = new int[mat.length / 2][mat.length / 2];
-        int resu4[][] = new int[mat.length / 2][mat.length / 2];
-
-        for (int i = 0; i < mat.length / 2; i++) {
-            for (int j = 0; j < mat.length / 2; j++) {
-                resu1[i][j] = mat[i][j];
-                resu2[i][j] = mat[i][j + mat.length / 2];
-                resu3[i][j] = mat[i + mat.length / 2][j];
-                resu4[i][j] = mat[i + mat.length / 2][j + mat.length / 2];
+          for (int i = 0; i < matTrabajo.length; i++) {
+            for (int j = 0; j < matTrabajo[0].length; j++) {
+                System.out.print(" "+matTrabajo[i][j]+ " ");
+                
             }
+            System.out.println("  ");
         }
+    }
+        
+        
+//        setMatriz(matTrabajo);
 
-        //configurando el primer cuadrante
-        for (int i = 1; i < resu1.length; i++) {
-            for (int j = 0; j < resu1[0].length; j++) {
-                if (j < i) {
-                    resu1[i][j] = 0;
-                }
-            }
-        }
 
-        // configurar segundo cuadrante
-        for (int i = 0; i < resu2.length; i++) {
-            for (int j = 0; j < resu2[0].length; j++) {
-                if (i + j >= resu2.length - 1) {
-                    resu2[i][j] = 1;
-                } else {
-                    resu2[i][j] = 0;
-                }
-
-            }
-
-        }
+//    private int[][] cuartocuadrante(int[][] matrix) {
+//        int newDimension = matrix.length / 2;
+//        int[][] toReturn = new int[newDimension][newDimension];
+//        for (int i = 0; i < newDimension; i++) {
+//            for (int j = 0; j < newDimension; j++) {
+//                toReturn[i][j] = matrix[i + newDimension][j + newDimension];
+//            }
+//        }
+//        return toReturn;
+//    }
+//
+//    public int[][] primercuadrante(int[][] matrix) {
+//        int newDimension = matrix.length / 2;
+//        int[][] toReturn = new int[newDimension][newDimension];
+//        for (int i = 0; i < newDimension; i++) {
+//            for (int j = 0; j < newDimension; j++) {
+//                toReturn[i][j] = matrix[i][j];
+//            }
+//        }
+//        return toReturn;
+//    }
+//
+//    public int[][] division() {
+//        int[][] mat = {{1, 1, 1, 1, 1, 1},
+//                       {1, 1, 1, 1, 1, 1},
+//                       {1, 1, 1, 1, 1, 1},
+//                       {1, 1, 1, 1, 1, 1},
+//                      {1, 1, 1, 1, 1, 1},
+//                       {1, 1, 1, 1, 1, 1}};
+//        
+//        int resu1[][] = new int[mat.length / 2][mat.length / 2];
+//        int resu2[][] = new int[mat.length / 2][mat.length / 2];
+//        int resu3[][] = new int[mat.length / 2][mat.length / 2];
+//        int resu4[][] = new int[mat.length / 2][mat.length / 2];
+//
+//        for (int i = 0; i < mat.length / 2; i++) {
+//            for (int j = 0; j < mat.length / 2; j++) {
+//                resu1[i][j] = mat[i][j];
+//                resu2[i][j] = mat[i][j + mat.length / 2];
+//                resu3[i][j] = mat[i + mat.length / 2][j];
+//                resu4[i][j] = mat[i + mat.length / 2][j + mat.length / 2];
+//            }
+//        }
+//
+//        //configurando el primer cuadrante
+//        for (int i = 1; i < resu1.length; i++) {
+//            for (int j = 0; j < resu1[0].length; j++) {
+//                if (j < i) {
+//                    resu1[i][j] = 0;
+//                }
+//            }
+//        }
+//
+//        // configurar segundo cuadrante
+//        for (int i = 0; i < resu2.length; i++) {
+//            for (int j = 0; j < resu2[0].length; j++) {
+//                if (i + j >= resu2.length - 1) {
+//                    resu2[i][j] = 1;
+//                } else {
+//                    resu2[i][j] = 0;
+//                }
+//
+//            }
+//
+//        }
 
         // configuracion de ltercer cuadrante
 //        int L1 = resu3.length;
@@ -455,79 +496,79 @@ public class Matriz {
 
 
         // configurar el cuarto cuadrante
-        for (int j = 1; j < resu4.length; j++) {
-            for (int i = 0; i < resu4.length; i++) {
-                if (i < j) {
-                    resu4[i][j] = 0;
-                }
-            }
-        }
+//        for (int j = 1; j < resu4.length; j++) {
+//            for (int i = 0; i < resu4.length; i++) {
+//                if (i < j) {
+//                    resu4[i][j] = 0;
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i < resu4.length; i++) {
+//            for (int j = 0; j < resu4[0].length; j++) {
+//                System.out.print(resu4[i][j]);
+//
+//            }
+//            System.out.println("");
+//
+//        }
+//        return resu2;
+//    }
 
-        for (int i = 0; i < resu4.length; i++) {
-            for (int j = 0; j < resu4[0].length; j++) {
-                System.out.print(resu4[i][j]);
-
-            }
-            System.out.println("");
-
-        }
-        return resu2;
-    }
-
-    public void generarMolino() {
-        int n = 6;
-        int h = 0;
-        int[][] mat = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                //Primer cuadrante
-                if (i < n / 2 && j < n / 2) {
-                    if (i <= j) {
-                        mat[i][j] = 1;
-                    } else {
-                        mat[i][j] = 0;
-                    }
-                }
-                //Segundo cuadrante
-                if (i < n / 2 && j >= n / 2) {
-                    h = i + n / 2;
-                    if (i <= j) {
-                        mat[i][j] = 1;
-                    } else {
-                        mat[i][j] = 0;
-                    }
-                }
-                //Tercer cuadrante
-                if (i >= n / 2 && j < n / 2) {
-                    if (i >= j) {
-                        mat[i][j] = 1;
-                    } else {
-                        mat[i][j] = 0;
-                    }
-                }
-                //Cuarto cuadrante
-                if (i >= n / 2 && j >= n / 2) {
-//                    h = i + n/2;
-                    if (i >= j) {
-                        mat[i][j] = 1;
-                    } else {
-                        mat[i][j] = 0;
-                    }
-                }
-            }
-        }
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                System.out.print(mat[i][j] + " ");
-
-            }
-            System.out.println("");
-
-        }
-        setMatriz(mat);
-
-
-    }
+//    public void generarMolino() {
+//        int n = 6;
+//        int h = 0;
+//        int[][] mat = new int[n][n];
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                //Primer cuadrante
+//                if (i < n / 2 && j < n / 2) {
+//                    if (i <= j) {
+//                        mat[i][j] = 1;
+//                    } else {
+//                        mat[i][j] = 0;
+//                    }
+//                }
+//                //Segundo cuadrante
+//                if (i < n / 2 && j >= n / 2) {
+//                    h = i + n / 2;
+//                    if (i <= j) {
+//                        mat[i][j] = 1;
+//                    } else {
+//                        mat[i][j] = 0;
+//                    }
+//                }
+//                //Tercer cuadrante
+//                if (i >= n / 2 && j < n / 2) {
+//                    if (i >= j) {
+//                        mat[i][j] = 1;
+//                    } else {
+//                        mat[i][j] = 0;
+//                    }
+//                }
+//                //Cuarto cuadrante
+//                if (i >= n / 2 && j >= n / 2) {
+////                    h = i + n/2;
+//                    if (i >= j) {
+//                        mat[i][j] = 1;
+//                    } else {
+//                        mat[i][j] = 0;
+//                    }
+//                }
+//            }
+//        }
+//        for (int i = 0; i < mat.length; i++) {
+//            for (int j = 0; j < mat[0].length; j++) {
+//                System.out.print(mat[i][j] + " ");
+//
+//            }
+//            System.out.println("");
+//
+//        }
+//        setMatriz(mat);
+//
+//
+//    }
 
     public int[][] getMatriz() {
         return this.matrizDeTrabajo;

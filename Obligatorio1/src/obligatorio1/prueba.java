@@ -18,10 +18,9 @@ public class prueba {
         PrintStream consola = System.out;
 //        PrintStream archivo = new PrintStream(new FileOutputStream("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
 //        
-//        
+    matrizObj.generarMolino(100);
         System.setOut(consola);
 //         System.setOut(archivo);
-        matrizObj.division();
 
 //        int matriz[][] = matrizObj.getMatriz();
 //        matrizObj.cargarMatrizEsquina(5, 10);
