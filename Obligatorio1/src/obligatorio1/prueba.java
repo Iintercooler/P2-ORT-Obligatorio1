@@ -14,11 +14,12 @@ public class prueba {
         Matriz matrizObj = new Matriz();
         Scanner input = new Scanner(System.in);
 //        input = new Scanner(new File(".\\Test\\datos.txt"));
-
+//matrizObj.cargarPuntas(9);
+matrizObj.cargarPuntas(10);
         PrintStream consola = System.out;
 //        PrintStream archivo = new PrintStream(new FileOutputStream("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
 //        
-    matrizObj.generarMolino(100);
+//    matrizObj.generarMolino(200);
         System.setOut(consola);
 //         System.setOut(archivo);
 
