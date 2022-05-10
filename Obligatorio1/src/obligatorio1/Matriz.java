@@ -1,19 +1,14 @@
 package obligatorio1;
 
-import static java.lang.Integer.MAX_VALUE;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Matriz {
 
     int[][] matrizDeTrabajo;
 
-//    public void setMatrizDeTrabajo(int[][] matrizDeTrabajo) {
-//        this.matrizDeTrabajo = matrizDeTrabajo;
-//    }
     public void cargarMatrizEsquina(int n, int desde) {
 
         int matriz[][] = new int[n][n];
@@ -25,29 +20,26 @@ public class Matriz {
                 matriz[j][i] = desde;
             }
             desde++;
-
         }
-
         setMatriz(matriz);
-
     }
 
+// Metodo para cargar cuadrante en forma decreciente a partir de un numero n
+
     private int[][] cargarCuadranteEsquina(int n) {
-        int aux=n;
+        int aux = n;
         int matriz[][] = new int[n][n];
-       
+
         for (int i = 0; i < matriz.length; i++) {
-            n=aux-i;
+            n = aux - i;
             for (int j = 0; j < matriz[0].length; j++) {
-                if(n>=0){
-                matriz[i][j] = n;
-                 n--;
+                if (n >= 0) {
+                    matriz[i][j] = n;
+                    n--;
                 }
             }
-           
 
         }
-         
 
         return matriz;
 
@@ -58,23 +50,22 @@ public class Matriz {
         int matriz2[][] = new int[n / 2][n / 2];
         int matriz3[][] = new int[n / 2][n / 2];
         int matriz4[][] = new int[n / 2][n / 2];
-int matResu[][]=new int[n][n];
-        
-        matriz1 = cargarCuadranteEsquina(n / 2);      
-        matriz2 = cargarCuadranteEsquina(n / 2);
-        rotar(matriz2,n/2);
-        
-        matriz3 = cargarCuadranteEsquina(n / 2);
-        rotar(matriz3,n/2);
-        rotar(matriz3,n/2);
-       
-        matriz4 = cargarCuadranteEsquina(n / 2);
-         rotar(matriz4,n/2);
-        rotar(matriz4,n/2);
-        rotar(matriz4,n/2);
-      
+        int matResu[][] = new int[n][n];
 
-         for (int i = 0; i < matriz1.length; i++) {
+        matriz1 = cargarCuadranteEsquina(n / 2);
+        matriz2 = cargarCuadranteEsquina(n / 2);
+        rotar(matriz2, n / 2);
+
+        matriz3 = cargarCuadranteEsquina(n / 2);
+        rotar(matriz3, n / 2);
+        rotar(matriz3, n / 2);
+
+        matriz4 = cargarCuadranteEsquina(n / 2);
+        rotar(matriz4, n / 2);
+        rotar(matriz4, n / 2);
+        rotar(matriz4, n / 2);
+
+        for (int i = 0; i < matriz1.length; i++) {
             for (int j = 0; j < matriz1.length; j++) {
                 matResu[i][j] = matriz1[i][j];
                 matResu[i][j + n / 2] = matriz2[i][j];
@@ -83,7 +74,6 @@ int matResu[][]=new int[n][n];
             }
         }
 
-       
         this.setMatriz(matResu);
     }
 
@@ -106,11 +96,6 @@ int matResu[][]=new int[n][n];
                     result++;
                 }
             }
-        }
-        if (result > 1 || result == 0) {
-            System.out.println("no es conectada");
-        } else {
-            System.out.println("es conectada" + result);
         }
 
         if (result == 1) {
@@ -139,9 +124,9 @@ int matResu[][]=new int[n][n];
         DFS(mat, row, col + 1);
         DFS(mat, row, col - 1);
     }
-
+ // Rota la matriz 90 grados.
     private static void rotar(int a[][], int N) {
-        // Rota la matriz 90 grados.
+       
         for (int i = 0; i < N / 2; i++) {
             for (int j = i; j < N - i - 1; j++) {
                 int temp = a[i][j];
@@ -212,7 +197,6 @@ int matResu[][]=new int[n][n];
 
     /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
-        // matriz de prueba que esta en la letra
         int mat[][] = this.getMatriz();
 
         int M = mat.length;
@@ -290,9 +274,6 @@ int matResu[][]=new int[n][n];
         boolean iguales = true;
         boolean salir = false;
         int[][] mat = getMatriz();
-//        int[][] mat = {{2,4,2},
-//                       {5,1,5},
-//                       {7,4,7}};
 
         for (int i = 0; i < mat.length && !salir; i++) {
             iguales = true;
