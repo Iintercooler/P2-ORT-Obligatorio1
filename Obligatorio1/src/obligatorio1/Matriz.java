@@ -80,8 +80,23 @@ public class Matriz {
 //   
     public boolean esConectada() {// calcua la cantidad de islas formadas por los ceros, si hay mas de una isla quiere decir que hay ceros no conectados
 
-        int mat[][] = this.matrizDeTrabajo;
-        boolean resultado = false;
+        int original[][] = this.getMatriz();
+        
+        int mat[][]= new int [original.length][original[0].length];
+        
+        for (int i = 0; i < original.length; i++) {
+            for (int j = 0; j < original[0].length; j++) {
+                mat[i][j]=original[i][j];
+                
+            }
+            
+        }
+        
+        
+        
+   
+
+boolean resultado = false;
         int h = mat.length;
         if (h == 0) {
             return false;
@@ -105,7 +120,10 @@ public class Matriz {
         if (result > 1) {
             resultado = false;
         }
-
+        
+        
+                                  
+        
         return resultado;
 
     }

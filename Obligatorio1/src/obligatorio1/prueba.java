@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,9 +20,10 @@ public class prueba {
 
     public static void menuPrincipal() throws FileNotFoundException {
         Matriz matrizObj = new Matriz();
+        String fileSep = System.getProperty("file.separator");
 
         PrintStream consola = System.out;
-        PrintStream archivo = new PrintStream(new FileOutputStream("./P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
+        PrintStream archivo = new PrintStream(new FileOutputStream("." + fileSep + "test" + fileSep + "salida.txt"));
         System.setOut(consola);
         String opcion = " ";
         Scanner dato;
@@ -54,7 +57,6 @@ public class prueba {
 
                 case "b":
                     dato = new Scanner(new File("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/entradas.txt"));
-                    System.out.println(dato);
                     break;
                 case "c":
 //                    cargar matriz numérica para trabajo
@@ -65,55 +67,93 @@ public class prueba {
                     break;
                 // mostrar matriz de trabajo con reborde
                 case "d":
-
-                for (int i = 0; i < matrizObj.getMatriz().length; i++) {
-                      for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
-                          System.out.println("+-----------");
-                          System.out.printf("%6d", gameboard[i][j]);
-                          if (j < matrizObj.getMatriz()[0].length - 1) {
-                              System.out.print("| ");
-                          }
-                      }
-                      System.out.println();
-                  }
-                //    for (int i = 0; i < matrizObj.getMatriz().length; i++) {
-                // for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
-                //     System.out.print(matrizObj.getMatriz()[i][j]);
-                // }
-                //        System.out.println("");
-            // }
-            
-
-            
-
+                    for (int i = 0; i < matrizObj.getMatriz().length; i++) {
+                        for (int k = 0; k < matrizObj.getMatriz().length; k++) {
+                            System.out.print("+----------");
+                        }
+                        System.out.println("+----------+");
+                        for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
+                            if (j == 0) {
+                                System.out.print("| ");
+                            }
+                            System.out.printf("%9d", matrizObj.getMatriz()[i][j]);
+                            if (j < matrizObj.getMatriz()[0].length - 1) {
+                                System.out.print("| ");
+                            } else {
+                                System.out.print("| ");
+                            }
+                        }
+                        System.out.println();
+                    }
+                    for (int k = 0; k < matrizObj.getMatriz().length; k++) {
+                        System.out.print("+----------");
+                    }
+                    System.out.println("+----------+");
 
                     break;
 
                 case "e":
+                    for (int i = 0; i < matrizObj.getMatriz().length; i++) {
+                        for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
+                            System.out.printf("%9d", matrizObj.getMatriz()[i][j]);
+//                            System.out.print();
+
+                        }
+                        System.out.println();
+                    }
                     break;
 
                 case "f":
-                    int n=leerEntero("Ingrese el tamaño", 0, 99999999, "Debe ingresar un numero valido");
-                    int desde=leerEntero("Ingrese desde que numero quiere cargar", 0, 99999999, "Debe ingresar un numero valido");
-                    matrizObj.cargarMatrizEsquina(n,desde);
+                    int n = leerEntero("Ingrese el tamaño", 0, 99999999, "Debe ingresar un numero valido");
+                    int desde = leerEntero("Ingrese desde que numero quiere cargar", MIN_VALUE, MAX_VALUE, "Debe ingresar un numero valido");
+                    matrizObj.cargarMatrizEsquina(n, desde);
                     break;
 
                 case "g":
+                    int punta = leerEnteroPar("Ingrese el tamaño de la matriz para cargar puntas,debe ser par", MIN_VALUE, MAX_VALUE, "Debe ingresar un numero valido");
+                    matrizObj.cargarPuntas(punta);
                     break;
 
                 case "h":
+                    if (matrizObj.esConectada()) {
+                        System.out.println("La matriz Es conectada");
+
+                    } else {
+                        System.out.println("No es conectada");
+
+                    }
+
                     break;
 
                 case "i":
+                   int molino=leerEnteroPar("Ingrese un numero par", 0, 99999999, "Debe ingresar un numero valido");
+                   matrizObj.generarMolino(molino);
+
+                    
+
                     break;
 
                 case "j":
+                     System.out.println(matrizObj.menorComunFilas());
                     break;
 
                 case "k":
+                   
+                   int reacomodoFilas = leerEntero("Ingrese cantidad de filas", 0, 99999999, "Debe ingresar un numero valido");
+                   int reacomodoColumnas = leerEntero("Ingrese cantidad de columnas", 0, 99999999, "Debe ingresar un numero valido");
+                   
+                   if(matrizObj.reacomodar(reacomodoFilas,reacomodoColumnas)){
+                       System.out.println("SE PUDO REACOMODAR");
+                       matrizObj.reacomodar(reacomodoFilas,reacomodoColumnas);
+                   }else System.out.println("NO SE PUEDE REACOMODAR");
                     break;
 
                 case "l":
+                    if (matrizObj.tieneFilaIgual()){
+                        System.out.println("Tiene fila igual.");
+                    } else{
+                        System.out.println("No tiene fila igual.");
+                    }
                     break;
 
                 case "x":
@@ -164,8 +204,28 @@ public class prueba {
         return dato;
 
     }
-    
-    
-    
+
+    private static int leerEnteroPar(String txt, int min, int max, String txtError) {
+        Scanner input = new Scanner(System.in);
+        boolean ok = false;
+        int dato = 0;
+        System.out.println(txt);
+        while (!ok) {
+            try {
+                dato = input.nextInt();
+                if ((dato <= max && dato >= min) && dato % 2 == 0) {
+                    ok = true;
+                } else {
+                    System.out.println(txtError);
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Solo se admite numeros, por favor reingrese");
+                input.nextLine();
+            }
+        }
+        return dato;
+
+    }
 
 }
