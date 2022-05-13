@@ -8,7 +8,11 @@ import java.util.Map;
 public class Matriz {
 
     int[][] matrizDeTrabajo;
-
+     
+    public int[][] getMatriz() {
+        return this.matrizDeTrabajo;
+    }
+    
     public void cargarMatrizEsquina(int n, int desde) {
 
         int matriz[][] = new int[n][n];
@@ -81,7 +85,6 @@ public class Matriz {
     public boolean esConectada() {// calcua la cantidad de islas formadas por los ceros, si hay mas de una isla quiere decir que hay ceros no conectados
 
         int original[][] = this.getMatriz();
-        
         int mat[][]= new int [original.length][original[0].length];
         
         for (int i = 0; i < original.length; i++) {
@@ -200,18 +203,36 @@ boolean resultado = false;
 
     }
 
-    public int[][] getMatriz() {
-        return this.matrizDeTrabajo;
-    }
+   
 
-    public Matriz() {
-        this.matrizDeTrabajo = new int[4][5];
-        for (int x = 0; x < this.matrizDeTrabajo.length; x++) {
-            for (int y = 0; y < this.matrizDeTrabajo[x].length; y++) {
-                this.matrizDeTrabajo[x][y] = (int) (Math.random() * 11);
+//    public Matriz() {
+//        
+//        
+//        this.matrizDeTrabajo = new int[4][5];
+//        for (int x = 0; x < this.matrizDeTrabajo.length; x++) {
+//            for (int y = 0; y < this.matrizDeTrabajo[x].length; y++) {
+//                this.matrizDeTrabajo[x][y] = (int) (Math.random() * 11);
+//            }
+//        }
+//        
+//        
+//    }
+    
+    
+        public Matriz() {
+        int mat[][]=new int[4][5];
+        
+        
+        for (int x = 0; x < mat.length; x++) {
+            for (int y = 0; y < mat[x].length; y++) {
+                mat[x][y] = (int) (Math.random() * 11);
             }
         }
+        setMatriz(mat);
+        
     }
+    
+    
 
     /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
