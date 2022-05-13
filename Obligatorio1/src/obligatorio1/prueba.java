@@ -65,12 +65,23 @@ public class prueba {
                     break;
                 // mostrar matriz de trabajo con reborde
                 case "d":
-                   for (int i = 0; i < matrizObj.getMatriz().length; i++) {
-                for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
-                    System.out.print(matrizObj.getMatriz()[i][j]);
-                }
-                       System.out.println("");
-            }
+
+                for (int i = 0; i < matrizObj.getMatriz().length; i++) {
+                      for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
+                          System.out.println("+-----------");
+                          System.out.printf("%6d", gameboard[i][j]);
+                          if (j < matrizObj.getMatriz()[0].length - 1) {
+                              System.out.print("| ");
+                          }
+                      }
+                      System.out.println();
+                  }
+                //    for (int i = 0; i < matrizObj.getMatriz().length; i++) {
+                // for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
+                //     System.out.print(matrizObj.getMatriz()[i][j]);
+                // }
+                //        System.out.println("");
+            // }
             
 
             
