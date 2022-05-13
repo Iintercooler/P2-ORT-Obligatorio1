@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class prueba {
         Matriz matrizObj = new Matriz();
 
         PrintStream consola = System.out;
-        PrintStream archivo = new PrintStream(new FileOutputStream("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
+        PrintStream archivo = new PrintStream(new FileOutputStream("./P2-ORT-Obligatorio1/Obligatorio1/test/salidas.txt"));
         System.setOut(consola);
         String opcion = " ";
         Scanner dato;
@@ -44,36 +45,46 @@ public class prueba {
             opcion = opcion.toLowerCase();
 
             switch (opcion) {
-                case "a":  {
-                    
+                case "a": {
+
                     System.setOut(archivo);
                 }
 
                 break;
 
-                case "b":  dato = new Scanner(new File("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/entradas.txt"));
+                case "b":
+                    dato = new Scanner(new File("/Users/fgavello/NetBeansProjects/P2-ORT-Obligatorio1/Obligatorio1/test/entradas.txt"));
                     System.out.println(dato);
                     break;
                 case "c":
 //                    cargar matriz numérica para trabajo
-                     int filas=leerEntero("Ingrese un cantidad de filas",0,99999999,"Debe ingresar un numero valido");
-                     int columnas=leerEntero("Ingrese un cantidad de columnas",0,99999999,"Debe ingresar un numero valido");
-                     matrizObj.setMatriz(generarMat(filas,columnas));
-                     
-                     
-                     
-                     
-                     
-                     
-                     
+                    int filas = leerEntero("Ingrese un cantidad de filas", 0, 99999999, "Debe ingresar un numero valido");
+                    int columnas = leerEntero("Ingrese un cantidad de columnas", 0, 99999999, "Debe ingresar un numero valido");
+                    matrizObj.setMatriz(generarMat(filas, columnas));
+
                     break;
+                // mostrar matriz de trabajo con reborde
                 case "d":
+                   for (int i = 0; i < matrizObj.getMatriz().length; i++) {
+                for (int j = 0; j < matrizObj.getMatriz()[0].length; j++) {
+                    System.out.print(matrizObj.getMatriz()[i][j]);
+                }
+                       System.out.println("");
+            }
+            
+
+            
+
+
                     break;
 
                 case "e":
                     break;
 
                 case "f":
+                    int n=leerEntero("Ingrese el tamaño", 0, 99999999, "Debe ingresar un numero valido");
+                    int desde=leerEntero("Ingrese desde que numero quiere cargar", 0, 99999999, "Debe ingresar un numero valido");
+                    matrizObj.cargarMatrizEsquina(n,desde);
                     break;
 
                 case "g":
@@ -102,25 +113,24 @@ public class prueba {
         } while (!opcion.equalsIgnoreCase("X"));
 
     }
-    
-    
-    private static int[][] generarMat(int filas,int columnas){
-    int mat[][] = new int [filas][columnas];
+
+    private void mostrarMatriz(int[][] mat) {
+
+    }
+
+    private static int[][] generarMat(int filas, int columnas) {
+        int mat[][] = new int[filas][columnas];
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
-                mat[i][j]=leerEntero("Ingrese valor",-999999,99999,"Ingrese un valor valido numerico");
-                
+                mat[i][j] = leerEntero("Ingrese valor", -999999, 99999, "Ingrese un valor valido numerico");
+
             }
-            
+
         }
-    
-    
-    
-    
-    return mat;
+
+        return mat;
     }
-    
-    
+
     private static int leerEntero(String txt, int min, int max, String txtError) {
         Scanner input = new Scanner(System.in);
         boolean ok = false;
@@ -144,4 +154,7 @@ public class prueba {
 
     }
     
+    
+    
+
 }
