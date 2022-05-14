@@ -9,9 +9,7 @@ public class Matriz {
 
     int[][] matrizDeTrabajo;
      
-    public int[][] getMatriz() {
-        return this.matrizDeTrabajo;
-    }
+    
     
     public void cargarMatrizEsquina(int n, int desde) {
 
@@ -302,8 +300,7 @@ boolean resultado = false;
         return sePuede;
 
     }
-//Esto de aca es el set matriz de trabajo que hiciste arriba en la linea 14?? 
-//Porque no hay ningun metodo en la letra del obligatorio que diga SetMatrizDe Trabajo.
+
 
     public void setMatriz(int[][] mat) {
         this.matrizDeTrabajo = mat;
@@ -329,4 +326,7 @@ boolean resultado = false;
         return iguales;
     }
 
+    public int[][] getMatriz() {
+        return this.matrizDeTrabajo;
+    }
 }

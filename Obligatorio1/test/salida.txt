@@ -1,0 +1,31 @@
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+
+Ingrese la opcion del menu que desee:
+A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
+G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
+X: terminar
+Error en el archivo de datos.txt
