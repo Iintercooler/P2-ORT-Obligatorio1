@@ -96,7 +96,6 @@ public class prueba {
                     break;
                 // mostrar matriz de trabajo con reborde
                 case "d":
-
                     int original[][] = matrizObj.getMatriz();
                     int mat[][] = new int[original.length][original[0].length];
 
@@ -107,13 +106,14 @@ public class prueba {
                         }
 
                     }
-
+                    
                     for (int i = 0; i < mat.length; i++) {
-                        for (int k = 0; k < mat.length; k++) {
+                        for (int k = 0; k < mat[0].length-1; k++) {
                             System.out.print("+----------");
                         }
 
                         System.out.println("+----------+");
+                     
                         for (int j = 0; j < mat[0].length; j++) {
                             if (j == 0) {
                                 System.out.print("| ");
@@ -128,6 +128,7 @@ public class prueba {
 
                         System.out.println();
                     }
+                   
                     for (int k = 0; k < mat[0].length - 1; k++) {
                         System.out.print("+----------");
                     }
