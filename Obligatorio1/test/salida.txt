@@ -8,24 +8,26 @@ Ingrese la opcion del menu que desee:
 A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
 G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
 X: terminar
++----------+----------+----------+----------+----------+
+|         9|         0|         0|         1|         2| 
++----------+----------+----------+----------+----------+
+|         2|         9|         9|         2|         0| 
++----------+----------+----------+----------+----------+
+|         5|         9|         9|         5|         2| 
++----------+----------+----------+----------+----------+
+|         7|         4|         3|         0|         5| 
++----------+----------+----------+----------+----------+
 
 Ingrese la opcion del menu que desee:
 A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
 G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
 X: terminar
+        9        0        0        1        2
+        2        9        9        2        0
+        5        9        9        5        2
+        7        4        3        0        5
 
 Ingrese la opcion del menu que desee:
 A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
 G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
 X: terminar
-
-Ingrese la opcion del menu que desee:
-A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
-G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
-X: terminar
-
-Ingrese la opcion del menu que desee:
-A: cambiar la entrada		B: cambiar la salida	C: cargar datos		D: mostrar reborde	E: mostrat tabulacion	F: esquina
-G: puntas		        H: ver conectada	I: molino		J: ver menor comun	K: reacomodar		L: ver iguales
-X: terminar
-Error en el archivo de datos.txt

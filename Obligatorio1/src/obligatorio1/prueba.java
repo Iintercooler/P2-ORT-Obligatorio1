@@ -29,12 +29,10 @@ public class prueba {
     public static void menuPrincipal() throws FileNotFoundException, IOException {
         Matriz matrizObj = new Matriz();
         Scanner input;
-        input = new Scanner(System.in);
-        int modoEntrada=2;
-        // modo de entrada 2 es por consola
-        // modo de entrada 1 es por archivo
-        int modoSalida = 1;
+        input = new Scanner(System.in);    
+        boolean salida_consola=true;
         
+        boolean entrada_consola=true;
 
         String fileSep = System.getProperty("file.separator");
         PrintStream consola = System.out;
@@ -58,35 +56,37 @@ public class prueba {
             switch (opcion) {
                 case "a": {
                     
-                     if (modoEntrada==1){
+                     if (!entrada_consola){
                     input = new Scanner(System.in);
-                    modoEntrada=2;
-                    }
+                    entrada_consola=true;
+                    break;
+                     }
                     
                     
-                    if (modoEntrada==2){
+                    if (entrada_consola){
                     input = new Scanner(new File("." + fileSep + "test" + fileSep + "datos.txt"));
-                    modoEntrada=1;
+                    entrada_consola=false;
+                    break;
                     }
                 }
 
-                break;
+               
 
                 case "b":
-                    // modo 1 archivo
-                    // modo 2 consola
-                    System.out.println(modoSalida);
-                    if (modoSalida == 2) {
+                   
+                    if (!salida_consola) {
                         
                         System.setOut(consola);
-                        modoSalida=1;
+                        salida_consola=true;
+                        break;
                     }
-                    if (modoSalida==1){
+                    if (salida_consola){
                          System.setOut(archivo);
-                         modoSalida=2;
+                         salida_consola=false;
+                         break;
                     }
 
-                    break;
+                    
                 case "c":
 //                    cargar matriz numérica para trabajo
                     int filas = leerEntero("Ingrese un cantidad de filas", 0, 99999999, "Debe ingresar un numero valido",input);
