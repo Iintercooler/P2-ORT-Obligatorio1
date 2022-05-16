@@ -1,3 +1,5 @@
+//Fernando Gavello
+//Gonzalo Loureiro
 package obligatorio1;
 
 import java.util.ArrayList;
@@ -8,9 +10,7 @@ import java.util.Map;
 public class Matriz {
 
     int[][] matrizDeTrabajo;
-     
-    
-    
+
     public void cargarMatrizEsquina(int n, int desde) {
 
         int matriz[][] = new int[n][n];
@@ -27,7 +27,6 @@ public class Matriz {
     }
 
 // Metodo para cargar cuadrante en forma decreciente a partir de un numero n
-
     private int[][] cargarCuadranteEsquina(int n) {
         int aux = n;
         int matriz[][] = new int[n][n];
@@ -46,6 +45,7 @@ public class Matriz {
         return matriz;
 
     }
+
     public void cargarPuntas(int n) {
         int matriz1[][] = new int[n / 2][n / 2];
         int matriz2[][] = new int[n / 2][n / 2];
@@ -77,24 +77,21 @@ public class Matriz {
 
         this.setMatriz(matResu);
     }
+
     public boolean esConectada() {// calcua la cantidad de islas formadas por los ceros, si hay mas de una isla quiere decir que hay ceros no conectados
 
         int original[][] = this.getMatriz();
-        int mat[][]= new int [original.length][original[0].length];
-        
+        int mat[][] = new int[original.length][original[0].length];
+
         for (int i = 0; i < original.length; i++) {
             for (int j = 0; j < original[0].length; j++) {
-                mat[i][j]=original[i][j];
-                
-            }
-            
-        }
-        
-        
-        
-   
+                mat[i][j] = original[i][j];
 
-boolean resultado = false;
+            }
+
+        }
+
+        boolean resultado = false;
         int h = mat.length;
         if (h == 0) {
             return false;
@@ -118,30 +115,29 @@ boolean resultado = false;
         if (result > 1) {
             resultado = false;
         }
-        
-        
-                                  
-        
+
         return resultado;
 
     }
-    private void DFS(int[][] mat, int row, int col) {
+
+    private void DFS(int[][] mat, int fila, int col) {
 
         int H = mat.length;
         int L = mat[0].length;
 
-        if (row < 0 || col < 0 || row >= H || col >= L || mat[row][col] != 0) {
+        if (fila < 0 || col < 0 || fila >= H || col >= L || mat[fila][col] != 0) {
             return;
         }// metodo recursivo 
-        mat[row][col] = 1;
-        DFS(mat, row + 1, col);
-        DFS(mat, row - 1, col);
-        DFS(mat, row, col + 1);
-        DFS(mat, row, col - 1);
+        mat[fila][col] = 1;
+        DFS(mat, fila + 1, col);
+        DFS(mat, fila - 1, col);
+        DFS(mat, fila, col + 1);
+        DFS(mat, fila, col - 1);
     }
- // Rota la matriz 90 grados.
+    // Rota la matriz 90 grados.
+
     private static void rotar(int a[][], int N) {
-       
+
         for (int i = 0; i < N / 2; i++) {
             for (int j = i; j < N - i - 1; j++) {
                 int temp = a[i][j];
@@ -152,6 +148,7 @@ boolean resultado = false;
             }
         }
     }
+
     public void generarMolino(int n) {
 
         int[][] mat1 = new int[n / 2][n / 2];
@@ -194,19 +191,20 @@ boolean resultado = false;
         }
         setMatriz(matTrabajo);
 
-    }    
+    }
+
     public Matriz() {
-        int mat[][]=new int[4][5];
-        
-        
+        int mat[][] = new int[4][5];
+
         for (int x = 0; x < mat.length; x++) {
             for (int y = 0; y < mat[x].length; y++) {
                 mat[x][y] = (int) (Math.random() * 11);
             }
         }
         setMatriz(mat);
-        
+
     }
+
     /* Retorna el menor elemento comuno que tienen todas las filas, si no hay, retorna "no tiene" */
     public String menorComunFilas() {
         int mat[][] = this.getMatriz();
@@ -234,7 +232,7 @@ boolean resultado = false;
 
         }
         if (comunes.size() > 0) {
-            resultado = "Tiene menor comun y es: "+String.valueOf(Collections.min(comunes));
+            resultado = "Tiene menor comun y es: " + String.valueOf(Collections.min(comunes));
         } else {
             resultado = "NO TIENE";
         }
@@ -242,6 +240,7 @@ boolean resultado = false;
         return resultado;
 
     }
+
     public boolean reacomodar(int m, int n) {
         int[][] mat = getMatriz();
 
@@ -274,9 +273,11 @@ boolean resultado = false;
         return sePuede;
 
     }
+
     public void setMatriz(int[][] mat) {
         this.matrizDeTrabajo = mat;
     }
+
     public boolean tieneFilaIgual() {
         boolean iguales = true;
         boolean salir = false;
@@ -296,6 +297,7 @@ boolean resultado = false;
         }
         return iguales;
     }
+
     public int[][] getMatriz() {
         return this.matrizDeTrabajo;
     }
